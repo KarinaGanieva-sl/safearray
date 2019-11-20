@@ -60,7 +60,7 @@ const T& SafeArray<T>::operator[] (size_t k) const
 }
 
 template <typename T>
-typename SafeArray<T>::SafeArray& SafeArray<T>::operator=(const SafeArray& right)
+typename SafeArray<T>::SafeArray& SafeArray<T>::operator= (const SafeArray& right)
 {
     if (this == &right) {
         return *this;
