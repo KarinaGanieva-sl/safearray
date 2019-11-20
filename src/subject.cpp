@@ -13,7 +13,7 @@
 
 
 #include "subject.h"
-
+#include <iostream>
 
 
 namespace xi {
@@ -35,8 +35,16 @@ std::ostream& operator<<(std::ostream& outs, const Subject& subj)
 
 std::istream& operator>>(std::istream& ins, Subject& subj)
 {
-    // TODO: здесь необходимо дописать реализацию метода
-
+    std::getline(ins, subj.name);
+    std::getline(ins, subj.title);
+    int index = 0;
+    int maxSubj = subj.description.getCapacity();
+    while (index < maxSubj)
+    {
+        std::getline(ins, subj.description[index++]);
+        if(subj.description[index-1] == "")
+            break;
+    }
     return ins;
 }
 
