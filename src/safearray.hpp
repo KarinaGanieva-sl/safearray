@@ -29,11 +29,11 @@ SafeArray<T>::SafeArray(size_t cap): _capacity(cap)
 {
     _storage = new T[cap];
 }
+    
 template <typename T>
 SafeArray<T>::~SafeArray()
 {
     delete[] _storage;
-    _capacity = 0;
 }
 
 template <typename T>
@@ -46,7 +46,7 @@ SafeArray<T>::SafeArray(const SafeArray &safeArray): SafeArray<T>::SafeArray(saf
 template <typename T>
 T& SafeArray<T>::operator[] (size_t k)
 {
-    if(k >= _capacity)
+    if(k < 0 || k >= _capacity)
         throw std::out_of_range("invalid index");
     return _storage[k];
 }
@@ -54,7 +54,7 @@ T& SafeArray<T>::operator[] (size_t k)
 template <typename T>
 const T& SafeArray<T>::operator[] (size_t k) const
 {
-    if(k >= _capacity)
+    if(k < 0 || k >= _capacity)
         throw std::out_of_range("invalid index");
     return _storage[k];
 }
@@ -62,9 +62,8 @@ const T& SafeArray<T>::operator[] (size_t k) const
 template <typename T>
 typename SafeArray<T>::SafeArray& SafeArray<T>::operator= (const SafeArray& right)
 {
-    if (this == &right) {
+    if (this == &right)
         return *this;
-    }
     _capacity = right._capacity;
     delete[] _storage;
     _storage = new T[_capacity];
