@@ -47,6 +47,8 @@ public:
      * \param[in] cap Размер (емкость) массива.
      */
     SafeArray(size_t cap);
+
+    SafeArray(const SafeArray &safeArray);
     
 
     // TODO: не забудьте про конструктор копирования и еще кое-что!
@@ -75,6 +77,9 @@ public:
      */
     const T& operator[] (size_t k) const;
 
+    SafeArray& operator=(const SafeArray& right);
+
+
    
     /// Возвращает "сырой" константный указатель на массив. Используется только для специальных целей
     /// в позиции \a rhv.
@@ -82,6 +87,8 @@ public:
 
     /// Возвращает актуальный размер массива.
     size_t getCapacity() const;
+
+
 
 
 protected:

@@ -94,7 +94,7 @@ TEST(Subject, DemoFile1)
 
     EXPECT_EQ(subjs[1].name, "SSD2");
     EXPECT_EQ(subjs[1].title, "Introduction to Computer Systems");
-    
+
     // след. две строки эквивалентны
     EXPECT_EQ(subjs[1].description.getCapacity(), subjs[1].MAX_LINES);
     EXPECT_EQ(subjs[1].description.getCapacity(), xi::Subject::MAX_LINES);
